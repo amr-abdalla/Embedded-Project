@@ -1,22 +1,7 @@
-#!/usr/bin/python
-#This code was written by Caleb G. Teague in 2017
-
-"""To do:
-	Add more error handling?
-	Add more variable setup on initiation
-	Update the timing for my accurate polling
-	Create getYaw() and getAngle() functions
-"""
-
 import smbus
 import time
 import math
 import _thread
-import RPi.GPIO as GPIO
-from datetime import datetime
-from pushover import init, Client
-from gpiozero import Buzzer
-from gpiozero import Button
 
 class MinIMU_v5_pi:
 	"""
