@@ -493,39 +493,3 @@ def handle_buzzer():
 		buzzer.off()
 		
 	return buzzerTime
-	
-
-def main():
-		init("a5fte2rvo476jmo8fcaqtkjmav59ie")
-		IMU = MinIMU_v5_pi()
-		#IMU.trackYaw()
-		button = Button(27)
-		global buzzerFlag
-		global buzzerTime
-		button.when_pressed = button_pressed_handler
-		prev_value_acc = IMU.readAccelerometer()
-		prev_value_gyro = IMU.readGyro()
-		
-		IMU.trackAngle()
-		while True:
-						
-			current_value_acc = IMU.readAccelerometer()
-			current_value_gyro = IMU.readGyro()
-				
-			magnitude_diff_acc = Get_Magnitude_Difference(prev_value_acc, current_value_acc)
-			magnitude_diff_gyro = Get_Magnitude_Difference(prev_value_gyro, current_value_gyro)
-			
-			if(magnitude_diff_acc > 20 and magnitude_diff_gyro > 400):
-				buzzerTime = 0
-				buzzerFlag = True	
-			
-			handle_buzzer()
-			prev_value_acc = current_value_acc
-			prev_value_gyro = current_value_gyro
-			time.sleep(0.1)
-
-
-if __name__ == "__main__":
-	print("MinIMU is main")
-	main()
-	
